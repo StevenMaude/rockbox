@@ -456,9 +456,9 @@ build() {
         cd "$toolname-$version"
         if (echo $needs_libs | grep -q gmp && test ! -d gmp); then
             echo "ROCKBOXDEV: Getting GMP"
-            getfile "gmp-4.3.2.tar.bz2" "$GNU_MIRROR/gmp"
-            tar xjf $dlwhere/gmp-4.3.2.tar.bz2
-            ln -s gmp-4.3.2 gmp
+            getfile "gmp-5.1.3.tar.bz2" "$GNU_MIRROR/gmp"
+            tar xjf $dlwhere/gmp-5.1.3.tar.bz2
+            ln -s gmp-5.1.3 gmp
         fi
 
         if (echo $needs_libs | grep -q mpfr && test ! -d mpfr); then
