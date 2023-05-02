@@ -4,12 +4,12 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout code 
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Make Rockbox tools directory
         run: mkdir -p "$HOME/rbtools/"
-     
+
       - name: Install OS dependencies
         run: sudo apt-get install -y automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext m4
 
