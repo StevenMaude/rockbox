@@ -1,5 +1,9 @@
 name: Build Rockbox
 on: push
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-20.04
