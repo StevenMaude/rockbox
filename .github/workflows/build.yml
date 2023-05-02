@@ -11,7 +11,7 @@ jobs:
         run: mkdir -p "$HOME/rbtools/"
      
       - name: Install OS dependencies
-        run: sudo apt-get install automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext m4
+        run: sudo apt-get install -y automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext m4
 
       - name: Cache build
         id: cache-build
@@ -27,13 +27,18 @@ jobs:
           chmod +x rockboxdev.sh
           RBDEV_TARGET="a" RBDEV_PREFIX="$HOME/rbtools/" ./rockboxdev.sh || cat "/tmp/rbdev-build/build-gcc.log"
 
+      - name: Show contents of rbtools
+        run: |
+          sudo apt-get install tree
+          tree "$HOME/rbtools"
+
       - name: Make Rockbox build directory
         run: mkdir build
 
       - name: Run configure
         run: |
           cd build
-          ../tools/configure --target=52 --type=n
+          PATH="$HOME/rbtools/bin":"$PATH" ../tools/configure --target=52 --type=n
 
       - name: Run make
         run: |
