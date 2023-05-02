@@ -1,0 +1,21 @@
+name: Build Rockbox
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v3
+
+      - name: Make build directory
+        run: mkdir build      
+      
+      - name: Install OS package build dependencies 
+        run: sudo apt-get install -y automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext
+
+      - name: Run Rockbox tools script
+        run: |
+          cd rockbox/tools
+          chmod +x rockboxdev.sh
+          ./rockboxdev.sh
+
