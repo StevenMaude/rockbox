@@ -7,15 +7,48 @@ jobs:
       - name: Checkout code 
         uses: actions/checkout@v3
 
-      - name: Make build directory
-        run: mkdir build      
+      - name: Make Rockbox tools directory
+        run: mkdir -p "$HOME/rbtools/"
      
       - name: Install OS dependencies
         run: sudo apt-get install automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext m4
 
+      - name: Cache build
+        id: cache-build
+        uses: actions/cache@v3
+        with:
+          path: ~/rbtools
+          key: ${{ runner.os }}-rbtools-${{ hashFiles('tools/rockboxdev.sh') }}
+
       - name: Run Rockbox tools script
+        if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           cd tools
           chmod +x rockboxdev.sh
-          sudo RBDEV_TARGET="a" ./rockboxdev.sh || sudo cat "/tmp/rbdev-build/build-gcc.log"
+          RBDEV_TARGET="a" RBDEV_PREFIX="$HOME/rbtools/" ./rockboxdev.sh || cat "/tmp/rbdev-build/build-gcc.log"
 
+      - name: Make Rockbox build directory
+        run: mkdir build
+
+      - name: Run configure
+        run: |
+          cd build
+          ../tools/configure --target=52 --type=n
+
+      - name: Run make
+        run: |
+          cd build
+          make -j
+
+      - name: Run make zip
+        run: |
+          cd build
+          make zip
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd build
+          ls -hla
+          gh release create rockbox.zip
