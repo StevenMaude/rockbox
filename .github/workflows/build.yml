@@ -14,11 +14,11 @@ jobs:
         run: mkdir /tmp/rbdev_prefix
 
       - name: Install OS package build dependencies 
-        run: sudo apt-get install -y automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext
+        run: sudo apt-get install -y automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext gcc xz-utils libbz2-dev bzip2 g++
 
       - name: Run Rockbox tools script
         run: |
           cd tools
           chmod +x rockboxdev.sh
-          PATH="$PATH":"/tmp/rbdev_prefix/bin" RBDEV_PREFIX="/tmp/rbdev_prefix" RBDEV_TARGET="a" sudo ./rockboxdev.sh
+          RBDEV_TARGET="a" sudo ./rockboxdev.sh
 
