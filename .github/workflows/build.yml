@@ -20,5 +20,5 @@ jobs:
         run: |
           cd tools
           chmod +x rockboxdev.sh
-          RBDEV_PREFIX=/tmp/rbdev_prefix ./rockboxdev.sh
+          RBDEV_PREFIX="/tmp/rbdev_prefix" RBDEV_TARGET="a" ./rockboxdev.sh
 
