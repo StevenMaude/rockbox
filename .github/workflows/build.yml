@@ -10,6 +10,9 @@ jobs:
       - name: Make build directory
         run: mkdir build      
       
+      - name: Make temp install prefix
+        run: mkdir /tmp/rbdev_prefix
+
       - name: Install OS package build dependencies 
         run: sudo apt-get install -y automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext
 
@@ -17,5 +20,5 @@ jobs:
         run: |
           cd tools
           chmod +x rockboxdev.sh
-          ./rockboxdev.sh
+          RBDEV_PREFIX=/tmp/rbdev_prefix ./rockboxdev.sh
 
