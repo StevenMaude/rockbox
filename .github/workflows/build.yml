@@ -20,5 +20,5 @@ jobs:
         run: |
           cd tools
           chmod +x rockboxdev.sh
-          RBDEV_TARGET="a" sudo ./rockboxdev.sh
+          RBDEV_TARGET=a sudo ./rockboxdev.sh
 
