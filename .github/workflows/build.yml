@@ -10,11 +10,8 @@ jobs:
       - name: Make build directory
         run: mkdir build      
      
-          #      - name: Install OS package build dependencies 
-          #run: sudo apt-get install -y automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext gcc xz-utils libbz2-dev bzip2 g++ binutils libisl-dev libisl23 texinfo
-
       - name: Install OS dependencies
-        run: sudo apt-get install -y libtool-bin texinfo
+        run: sudo apt-get install automake bison build-essential ccache flex libc6-dev libgmp3-dev libmpfr-dev libsdl1.2-dev libtool-bin texinfo zip gawk wget libmpc-dev gettext m4
 
       - name: Run Rockbox tools script
         run: |
