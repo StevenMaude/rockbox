@@ -456,30 +456,30 @@ build() {
         cd "$toolname-$version"
         if (echo $needs_libs | grep -q gmp && test ! -d gmp); then
             echo "ROCKBOXDEV: Getting GMP"
-            getfile "gmp-4.3.2.tar.bz2" "$GNU_MIRROR/gmp"
-            tar xjf $dlwhere/gmp-4.3.2.tar.bz2
-            ln -s gmp-4.3.2 gmp
+            getfile "gmp-6.1.0.tar.bz2" "$GNU_MIRROR/gmp"
+            tar xjf $dlwhere/gmp-6.1.0.tar.bz2
+            ln -s gmp-6.1.0 gmp
         fi
 
         if (echo $needs_libs | grep -q mpfr && test ! -d mpfr); then
             echo "ROCKBOXDEV: Getting MPFR"
-            getfile "mpfr-3.1.0.tar.bz2" "$GNU_MIRROR/mpfr"
-            tar xjf $dlwhere/mpfr-3.1.0.tar.bz2
-            ln -s mpfr-3.1.0 mpfr
+            getfile "mpfr-3.1.4.tar.bz2" "$GNU_MIRROR/mpfr"
+            tar xjf $dlwhere/mpfr-3.1.4.tar.bz2
+            ln -s mpfr-3.1.4 mpfr
         fi
 
         if (echo $needs_libs | grep -q mpc && test ! -d mpc); then
             echo "ROCKBOXDEV: Getting MPC"
-            getfile "mpc-1.0.1.tar.gz" "http://www.multiprecision.org/downloads"
-            tar xzf $dlwhere/mpc-1.0.1.tar.gz
-            ln -s mpc-1.0.1 mpc
+            getfile "mpc-1.0.3.tar.gz" "http://www.multiprecision.org/downloads"
+            tar xzf $dlwhere/mpc-1.0.3.tar.gz
+            ln -s mpc-1.0.3 mpc
         fi
 
         if (echo $needs_libs | grep -q isl && test ! -d isl); then
             echo "ROCKBOXDEV: Getting ISL"
-            getfile "isl-0.15.tar.bz2" "https://gcc.gnu.org/pub/gcc/infrastructure"
-            tar xjf $dlwhere/isl-0.15.tar.bz2
-            ln -s isl-0.15 isl
+            getfile "isl-0.12.2.tar.bz2" "https://gcc.gnu.org/pub/gcc/infrastructure"
+            tar xjf $dlwhere/isl-0.12.2.tar.bz2
+            ln -s isl-0.12.2 isl
         fi
         cd $builddir
     fi
