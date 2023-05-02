@@ -15,7 +15,7 @@ jobs:
 
       - name: Run Rockbox tools script
         run: |
-          cd rockbox/tools
+          cd tools
           chmod +x rockboxdev.sh
           ./rockboxdev.sh
 
