@@ -60,4 +60,4 @@ jobs:
         run: |
           cd build
           ls -hla
-          gh release create rockbox.zip
+          gh release create --draft test-release rockbox.zip
