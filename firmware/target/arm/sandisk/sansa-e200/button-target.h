@@ -22,7 +22,7 @@
 #ifndef _BUTTON_TARGET_H_
 #define _BUTTON_TARGET_H_
 
-#define HAS_BUTTON_HOLD
+//#define HAS_BUTTON_HOLD
 
 void clickwheel_int(void);
 void button_int(void);
