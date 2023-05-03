@@ -42,7 +42,7 @@ jobs:
       - name: Run configure
         run: |
           cd build
-          PATH="$HOME/rbtools/bin":"$PATH" ../tools/configure --target=52 --type=n
+          PATH="$HOME/rbtools/bin":"$PATH" ../tools/configure --target=50 --type=n
 
       - name: Run make
         run: |
