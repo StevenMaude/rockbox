@@ -316,7 +316,7 @@ int button_read_device(void)
 #ifdef BOOTLOADER
     /* Read buttons directly in the bootloader */
     button_int();
-#else
+#elif defined(HAS_BUTTON_HOLD)
     /* light handling */
     if (hold_button != hold_button_old)
     {
